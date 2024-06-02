@@ -39,7 +39,7 @@ def notify_downtime(website_id):
         send_mail(
             "Website Down",
             f"The website {website.name} is down. Status code: {last_result.status_code}",
-            "from@example.com",
-            ["user@example.com"],
+            "nishant.nawarkhede@gmail.com",
+            ["nishant@nawarkhede.com"],
             fail_silently=False,
         )
