@@ -1,0 +1,6 @@
+<h1>Monitoring Results</h1>
+<ul>
+  {% for result in results %}
+  <li>{{ result.checked_at }} - {{ result.status_code }} - {{ result.response_time }}s</li>
+  {% endfor %}
+</ul>

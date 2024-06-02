@@ -1,0 +1,6 @@
+<h1>Websites</h1>
+<ul>
+  {% for website in websites %}
+  <li><a href="{% url 'monitoring_results' website.id %}">{{ website.name }}</a></li>
+  {% endfor %}
+</ul>
