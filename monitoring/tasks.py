@@ -10,6 +10,7 @@ logger = logging.getLogger(__name__)
 
 @shared_task
 def check_website(website_id):
+    logger.info(f"Sending request for website_id {website_id}")
     website = Website.objects.get(id=website_id)
     try:
         response = requests.get(website.url)

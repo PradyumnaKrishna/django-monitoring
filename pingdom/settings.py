@@ -38,6 +38,9 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     "monitoring",
+    "pingdom.apps.MyAppConfig",
+    "django_extensions",
+    "django_celery_beat",
 ]
 
 MIDDLEWARE = [
