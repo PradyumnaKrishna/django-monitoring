@@ -6,11 +6,12 @@ This is a simple Python Django application created to check if a website is up o
 
 1. Install all dependencies: `pip install -r requirements.txt`
 2. Create a new Website entry: open the Django shell and import models from the monitoring app, then create an object for the Website model.
-3. Run the server: `python manage.py runserver`
-4. Start a Celery worker node: `celery -A pingdom worker --loglevel=info`
-5. Start Celery beat for scheduling tasks: `celery -A pingdom beat --loglevel=info`
-6. Navigate to - http://localhost:8000/monitoring/
-7. Open the shell and create an entry for the Website model. Once the object is created, a signal will trigger, and a new task will be added to CrontabSchedule and PeriodicTask.
+3. Migrate the models `python manage.py migrate`
+4. Run the server: `python manage.py runserver`
+5. Start a Celery worker node: `celery -A pingdom worker --loglevel=info`
+6. Start Celery beat for scheduling tasks: `celery -A pingdom beat --loglevel=info`
+7. Navigate to - http://localhost:8000/monitoring/
+8. Open the shell and create an entry for the Website model. Once the object is created, a signal will trigger, and a new task will be added to CrontabSchedule and PeriodicTask.
 
 ```
 In [13]: from monitoring.models import *
