@@ -3,7 +3,7 @@ from django.db.models.signals import post_save
 from django.dispatch import receiver
 from monitoring.models import Website
 from celery.schedules import crontab
-from pingdom.celery import app
+from config.celery import app
 from django_celery_beat.models import PeriodicTask, CrontabSchedule
 import json
 
