@@ -12,7 +12,10 @@ class Website(models.Model):
 
     # Website last online time.
     def last_online(self):
-        return self.results.filter(status_code__lt=400).order_by("-checked_at").first().checked_at
+        result = self.results.filter(status_code__lt=400).order_by("-checked_at").first()
+        if result:
+            return result.checked_at
+        return 'Never'
 
     def __str__(self):
         return self.name

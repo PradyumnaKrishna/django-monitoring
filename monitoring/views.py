@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect, resolve_url
 from .models import Website, MonitoringResult
 from django.contrib.auth.decorators import login_required
 
@@ -8,7 +8,7 @@ def website_list(request):
     # Get user websites
     websites = Website.objects.filter(owner=request.user)
 
-    return render(request, "monitoring/index.html", {"websites": websites})
+    return render(request, "monitoring/index.html", {"websites": websites, "user": request.user})
 
 
 @login_required
@@ -24,3 +24,25 @@ def monitoring_results(request, website_id):
         "-checked_at"
     )
     return render(request, "monitoring/monitoring_results.html", {"website": website, "results": results})
+
+
+@login_required
+def add_website(request):
+    # Check if the request is POST
+    if request.method == "POST":
+
+        # Get the form data
+        name = request.POST.get("name")
+        url = request.POST.get("url")
+        alert = request.POST.get("alert") == 'on'
+        webhook = request.POST.get("webhook")
+
+        # Create the website alert
+        website = Website.objects.create(
+            name=name, url=url, owner=request.user, alert=alert, webhook=webhook
+        )
+
+        # Redirect to the results page
+        return redirect(resolve_url("results", website_id=website.id))
+
+    return redirect("")
