@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     "config.apps.MyAppConfig",
     "monitoring",
+    "sso",
     "django_extensions",
     "django_celery_beat",
     "django_celery_results",
@@ -127,6 +128,10 @@ USE_TZ = True
 
 STATIC_URL = "static/"
 
+
+# LOGIN URL
+LOGIN_URL = "/login/"
+
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
 
@@ -136,3 +141,7 @@ CELERY_BROKER_URL = os.environ.get("CELERY_BROKER_URL")
 CELERY_RESULT_BACKEND = "django-db"
 CELERY_CACHE_BACKEND = "django-cache"
 CELERY_TIMEZONE = "UTC"
+
+# GitHub Client ID and Secret for SSO
+CLIENT_ID = os.getenv('CLIENT_ID')
+CLIENT_SECRET = os.getenv('CLIENT_SECRET')
