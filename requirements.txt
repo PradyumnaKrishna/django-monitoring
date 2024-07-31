@@ -7,4 +7,4 @@ celery[redis]==5.4.0
 django-celery-beat==2.6.0
 django-celery-results==2.5.1
 python-dotenv==1.0.1
-psycopg2==2.9.9
+psycopg2-binary==2.9.9
